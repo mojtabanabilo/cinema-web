@@ -1,0 +1,6 @@
+@import "../style/public/mixin.scss";
+
+.components{
+    width: 100vw;
+    @include mix-flex(flex, column, center, center);
+}

@@ -1,0 +1,29 @@
+@font-face {
+    font-family: font-web;
+    src: url(../font/Roboto-Medium.ttf);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0096d1; 
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0076a5; 
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: font-web;
+    overflow-x: hidden;
+    a{
+        text-decoration: none;
+    }
+}

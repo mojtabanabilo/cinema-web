@@ -1,0 +1,129 @@
+@import "../style/public/mixin.scss";
+
+.poster{
+    width: 100vw;
+    height: 60vh;
+    background-image: url(../image/poster.jpg);
+    background-position: center;
+    background-size: cover;
+    .shadow{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #000000, rgba(0, 0, 0, 0.507),#ffffff00);
+        @include mix-flex(flex, column, flex-start, center);
+        .bubble{
+            width: 100%;
+            height: fit-content;
+            @include mix-flex(flex, column, center, center);
+            h1{
+                color: #fff;
+                font-size: xx-large;
+                overflow: hidden;
+            }
+            .search-input{
+                margin-top: 10px;
+                @include mix-flex(flex, row, center, center);
+                input{
+                    width: 200px;
+                    height: 20px;
+                    background: none;
+                    border: 2px solid #ffffff;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    padding: 5px;
+                    color: #fff;
+                    border-right: none;
+                    &::placeholder{
+                        color: #fff;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                img{
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    border: 2px solid white;
+                }
+            }
+        }
+        .search-result{
+            width: 60%;
+            height: 250px;
+            background: #3f3f3f60;
+            border: 2px solid #ffffff;
+            margin-top: 10px;
+            border-radius: 5px;
+            padding: 0 10px;
+            .result{
+                width: 100%;
+                height: 55px;
+                background: none;
+                color: #fff;
+                padding: 5px;
+                border-bottom: solid 2px #fff;
+                cursor: pointer;
+                @include mix-flex(flex, row, null, center);
+                >*{
+                    margin-left: 10px;
+                }
+                .small-logo{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 3px;
+                }
+                .orginal-title, .date{
+                    font-size: small;
+                }
+            }
+            .bad-result{
+                width: 100%;
+                height: fit-content;
+                text-align: center;
+                margin-top: 10px;
+                h1{
+                    color: #fff;
+                    font-size: large; 
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+@include max-media(640px){
+    .poster{
+        .shadow{
+            .bubble{
+                h1{
+                    font-size: medium;
+                }
+            }
+        }
+    }
+}
+@include max-media(550px){
+    .poster{
+        .shadow{
+            .search-result{
+                width: 90%;
+            }
+        }
+    }
+}
+@include max-media(320px){
+    .poster{
+        .shadow{
+            .bubble{
+                h1{
+                    font-size: small;
+                }
+                button{
+                    width: 70px;
+                    height: 25px;
+                    font-size: small;
+                }
+            }
+        }
+    }
+}

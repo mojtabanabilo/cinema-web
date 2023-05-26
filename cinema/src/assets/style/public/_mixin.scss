@@ -1,0 +1,25 @@
+@mixin mix-flex($display, $fDirection, $jContent, $aItems){
+    display: $display;
+    flex-direction: $fDirection;
+    justify-content: $jContent;
+    align-items: $aItems;
+}
+
+@mixin mix-position($position, $left, $top, $transform){
+    position: $position;
+    left: $left;
+    top: $top;
+    transform: $transform;
+}
+
+@mixin max-media($width){
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin min-media($width){
+    @media (min-width: $width) {
+        @content;
+    }
+}

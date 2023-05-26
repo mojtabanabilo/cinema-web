@@ -1,0 +1,173 @@
+@import "../style/public/mixin.scss";
+
+.details-section{
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    overflow-y: hidden;
+    @include mix-flex(flex, row, center, center);
+    .bg-shadow{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #000000, #000000a1, #80808000);
+        @include mix-flex(flex, row, center, center);
+        .details{
+            width: calc(100% - 10%);
+            height: 90vh;
+            border-radius: 5px;
+            background: #1f1f1f98;
+            padding-top: 20px;
+            box-shadow: 0px 0px 20px #fff;
+            @include mix-flex(flex, column, center, center);
+            .detail-1, .detail-2{
+                width: 100%;
+                height: 50%;
+            }
+            .detail-1{
+                box-sizing: border-box;
+                padding-left: 20px;
+                padding-right: 5px;
+                @include mix-flex(flex, row, flex-start, center);
+                .section-image{
+                    width: fit-content;
+                    height: 100%;
+                    @include mix-flex(flex, row, center, center);
+                    img{
+                        width: 180px;
+                        height: 100%;
+                        border-radius: 10px;
+                        filter: opacity(.9);
+                    }
+                }
+                .section-title{
+                    width: fit-content;
+                    height: 100%;
+                    padding-left: 20px;
+                    @include mix-flex(flex, column, center, flex-start);
+                    h2{
+                        margin-bottom: 10px;
+                        font-size: large;
+                    }
+                }
+                .imdb, .lang, .date{
+                    width: fit-content;
+                    height: fit-content;
+                    @include mix-flex(flex, row, center, center);
+                }
+                .date{
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                    }
+                }
+                .imdb{
+                    img{
+                        width: 40px;
+                        height: 35px;
+                        margin-right: 5px;
+                    }
+                }
+                .lang{
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            .detail-2{
+                box-sizing: border-box;
+                padding: 10px 20px;
+                text-align: justify;
+                @include mix-flex(flex, column, flex-start, flex-start);
+                h2{
+                    font-size: large;
+                    overflow: hidden;
+                }
+                p{
+                    font-size: medium;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+@include max-media(500px){
+    .details-section{
+        .bg-shadow{
+            .details{
+                .detail-2{
+                    p{
+                        overflow-y: scroll;
+                    }
+                }
+            }
+        }
+    }
+}
+@include max-media(450px){
+    .details-section{
+        .bg-shadow{
+            .details{
+                .detail-1{
+                    .section-title{
+                        h2{
+                            font-size: small;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include max-media(440px){
+    .details-section{
+        .bg-shadow{
+            .details{
+                .detail-1{
+                    .section-title{
+                        .date, .imdb, .lang{
+                            img{
+                                width: 25px;
+                                height: 25px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include max-media(400px){
+    .details-section{
+        .bg-shadow{
+            .details{
+                .detail-1{
+                    .section-title{
+                        box-sizing: border-box;
+                        .date, .imdb, .lang{
+                            p{
+                                font-size: small;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include max-media(500px){
+    .details-section{
+        .bg-shadow{
+            .details{
+                .detail-2{
+                    p{
+                        font-size: small;
+                    }
+                }
+            }
+        }
+    }
+}
