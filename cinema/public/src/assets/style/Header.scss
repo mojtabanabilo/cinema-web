@@ -1,0 +1,86 @@
+@import "../style/public/mixin.scss";
+
+.header{
+    height: 100vw;
+    height: 120px;
+    padding: 0 10px;
+    background: #000;
+    position: relative;
+    color: #fff;
+    @include mix-flex(flex, row, space-between, center);
+    .hamburger-menu{
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+    .lists{
+        ul{
+            padding: 5px;
+            @include mix-flex(flex, row, space-between, center);
+            a{
+                color: #fff;
+                margin: 0 5px;
+                cursor: pointer;
+                transition: all .3s;
+                &:hover{
+                    transform: translateY(-3px);
+                    transition: all .3s;
+                }
+            }
+        }
+    }
+    .logo{
+        width: 100px;
+        height: 50px;
+        border-radius: 5px;
+        @include mix-position(absolute, 50%, 50%, translate(-50%, -50%));
+    }
+    .user{
+        .user-profile, .profile{
+            @include mix-flex(flex, row, center, center);
+        }
+        .set-profile{
+            button{
+                background: inherit;
+                border: none;
+                color: #fff;
+                margin: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@include max-media(880px){
+    .header{
+        ul{
+            li{
+                font-size: .8rem;
+            }
+        }
+    }
+}
+@include max-media(580px){
+    .header{
+        .user{
+            .set-profile{
+                @include mix-flex(flex, column, center, center);
+            }
+        }
+    }
+}
+@include max-media(400px){
+    .header{
+        .logo{
+            width: 75px;
+            height: 35px;
+        }
+    }
+}
+@include max-media(300px){
+    .header{
+        .logo{
+            display: none;    
+        }
+    }
+}

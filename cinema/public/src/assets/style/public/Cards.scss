@@ -1,0 +1,85 @@
+@import "./mixin.scss";
+
+.cards{
+    width: calc(100% - 3%);
+    background: #303030;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 10px;
+    margin: 20px 0;
+    padding: 20px 0;
+    > *{
+        margin: auto;
+    }
+    .head-title{
+        h1{color: #fff}
+        p{color: #00aeff; margin-top: 5px}
+        @include mix-flex(flex, column, center, flex-start);
+    }
+    .card{
+        width: 200px;
+        height: 280px;
+        padding: 0 10px;
+        border-radius: 5px;
+        background: #57575771;
+        @include mix-flex(flex, column, center, flex-start);
+        .movie-poster{
+            width: 120px;
+            height: 180px;
+            border-radius: 5px;
+            @include mix-position(relative, 50%, 0%, translate(-50%, 0%));
+        }
+        .title{
+            margin-top: 5px;
+            color: #fff;
+            font-size: 1rem;
+            overflow: hidden;
+            &:hover{
+                color: #6dd1ff;
+            }
+        }
+        .release-date{
+            font-size: 12px;
+            color: #b1b1b1;
+        }
+        .votes{
+            width: 100%;
+            color: #999999;
+            @include mix-flex(flex, row, space-between, center);
+            .imdb{
+                @include mix-flex(flex, row, center, center);
+                img{
+                    width: 40px;
+                    height: 30px;
+                    margin-right: 5px;
+                }
+            }
+            .stars{
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+@include max-media(1240px){
+    .cards{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@include max-media(1030px){
+    .cards{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@include max-media(750px){
+    .cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@include max-media(500px){
+    .cards{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
