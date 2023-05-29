@@ -17,7 +17,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const VmTopRate = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newTopRate = useSelector(state => state.selectItem);
+    const newTopRate = useSelector(state => state.dataState.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {

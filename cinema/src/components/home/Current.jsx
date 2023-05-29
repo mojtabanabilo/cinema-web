@@ -17,7 +17,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const Current = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newCurrent = useSelector(state => state.selectItem);
+    const newCurrent = useSelector(state => state.dataState.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {

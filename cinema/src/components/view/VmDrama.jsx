@@ -17,7 +17,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const VmDrama = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newDrama = useSelector(state => state.selectItem);
+    const newDrama = useSelector(state => state.dataState.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {

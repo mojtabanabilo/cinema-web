@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector , useDispatch } from "react-redux";
 import { fetchUsers } from '../redux/data/dataAction';
+import {increase, decrease} from "../redux/count/counterAction";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/View.scss";
@@ -18,7 +19,7 @@ const VmBest = () => {
     let count;
     AOS.init();
     const [star, setStar] = useState(false);
-    const newBest = useSelector(state => state.selectItem);
+    const newBest = useSelector(state => state.dataState.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,12 +28,12 @@ const VmBest = () => {
 
     const starCounter = movieId => {
         setStar(true);
-        const findData = newBest[2].find(i => i.id === movieId);
+        const findData = newBest[2].findIndex(i => i.id === movieId);
         console.log(findData);
         if(findData) {
-            count = findData.vote_count + 1;
-            console.log(count);
-            return count;
+            const result = newBest[2][findData].vote_count + 1;
+            console.log(result);
+            return result;
         }
     }
 
@@ -54,14 +55,15 @@ const VmBest = () => {
                 <div className='votes'>
                     <div className='imdb'>
                         <img src={imdb} alt='imdb'/>
-                        <p>{i.vote_average} ({star ? count : i.vote_count})</p>
+                        <p>{i.vote_average} ({star ? `${+starCounter}` : i.vote_count})</p>
                     </div>
                     {
                         star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
-                            starCounter(i.id)
+                            dispatch(increase(i.id))
                         }}/> : 
                         <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                             setStar(false)
+                            dispatch(decrease(i.id))
                         }}/>
                     }
                 </div>

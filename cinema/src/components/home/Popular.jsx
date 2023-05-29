@@ -14,7 +14,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 const Popular = () => {
     const [star, setStar] = useState(false);
-    const newPopular = useSelector(state => state.selectItem);
+    const newPopular = useSelector(state => state.dataState.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {

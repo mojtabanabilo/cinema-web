@@ -15,10 +15,9 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const Details = () => {
     const params = useParams();
     const navigator = useNavigate();
-    const data = useSelector(state => state.details);
+    const data = useSelector(state => state.dataState.details);
     const dispatch = useDispatch();
     const result = data.find(i => i.id === +params.id);
-    console.log(result);
 
     useEffect(() => {
         !data.length && dispatch(fetchUsers());

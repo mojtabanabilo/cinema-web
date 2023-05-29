@@ -30,6 +30,12 @@ const dataReducer = (state = initialState, action) => {
                 selectItem: [],
                 error: action.payload
             }
+        case "ADD-VOTE-RATE":
+            const findItem = state.details.findIndex(i => i.id === action.payload.id);
+            state.details[findItem].vote_count++;
+        return {
+            ...state
+        }
         default:
             return state;
     }
