@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector , useDispatch } from "react-redux";
-import { fetchUsers } from '../redux/data/dataAction';
+import { fetchUsers, increase, decrease } from '../redux/data/dataAction';
+import { shorten } from '../../functions/functions';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/View.scss";
@@ -50,9 +51,11 @@ const VmBest = () => {
                     {
                         star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
                             setStar(true)
+                            dispatch(increase(i))
                         }}/> : 
                         <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                             setStar(false)
+                            dispatch(decrease(i))
                         }}/>
                     }
                 </div>

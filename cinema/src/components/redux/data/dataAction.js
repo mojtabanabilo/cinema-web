@@ -8,6 +8,13 @@ const KIDS_MOVIES = `https://api.themoviedb.org/3/discover/movie?certification_c
 const TOP_RATED_MOVIES = "https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=7cb145dba9c9ab1992201c68dcb32722";
 const DRAMA_MOVIES = `https://api.themoviedb.org/3/discover/movie?with_genres=18&primary_release_year=2022&api_key=7cb145dba9c9ab1992201c68dcb32722`;
 
+export const increase = data => {
+    return {type: "INCREASE", payload: data}
+}
+export const decrease = data => {
+    return {type: "DECREASE", payload: data}
+}
+
 const fetchUserRequest = () => {
     return {type: "FETCH-USER-REQUEST"}
 }
@@ -20,6 +27,7 @@ const fetchDetailSuccess = data => {
 const fetchUserFailure = err => {
     return {type: "FETCH-USER-FAILURE", payload: err}
 }
+
 export const fetchUsers = () => {
     return dispatch => {
         dispatch(fetchUserRequest())

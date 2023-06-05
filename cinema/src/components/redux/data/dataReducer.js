@@ -7,6 +7,18 @@ const initialState = {
 
 const dataReducer = (state = initialState, action) => {
     switch(action.type){
+        case "INCREASE":
+            const indexIncrease = () => state.selectItem.findIndex(i => i.id === payload.id);
+            state.selectItem[indexIncrease].vote_count++
+            return {
+                ...state
+            }
+        case "DECREASE":
+            const indexDecrease = () => state.selectItem.findIndex(i => i.id === payload.id);
+            state.selectItem[indexDecrease].vote_count--
+            return {
+                ...state
+            }
         case "FETCH-USER-REQUEST":
             return {
                 ...state,
