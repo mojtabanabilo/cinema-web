@@ -18,17 +18,18 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const VmPopular = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newPopular = useSelector(state => state.dataState.selectItem);
+    const newPopular = useSelector(state => state.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scroll(0,0)
         !newPopular.length && dispatch(fetchUsers());
     }, [])
 
     return (
         <div className='cards' data-aos="fade-left" data-aos-delay="100">
             <div className='head-title'>
-                <h1>Drama movie's</h1>
+                <h1>Popular movie's</h1>
                 <Link to="/home">
                     <p>Back to home.</p>
                 </Link>

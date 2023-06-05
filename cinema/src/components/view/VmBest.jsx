@@ -22,6 +22,7 @@ const VmBest = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scroll(0,0)
         !newBest.length && dispatch(fetchUsers());
     }, [])
 
@@ -51,11 +52,11 @@ const VmBest = () => {
                     {
                         star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
                             setStar(true)
-                            dispatch(increase(i))
+                            dispatch(increase(i.vote_count))
                         }}/> : 
                         <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                             setStar(false)
-                            dispatch(decrease(i))
+                            dispatch(decrease(i.vote_count))
                         }}/>
                     }
                 </div>

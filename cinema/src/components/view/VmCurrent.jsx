@@ -18,10 +18,11 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const VmCurrent = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newCurrent = useSelector(state => state.dataState.selectItem);
+    const newCurrent = useSelector(state => state.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        window.scroll(0,0)
         !newCurrent.length && dispatch(fetchUsers());
     }, [])
     return (
