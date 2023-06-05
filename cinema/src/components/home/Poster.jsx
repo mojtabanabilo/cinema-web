@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { shorten } from '../../functions/functions';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/Poster.scss";
@@ -49,7 +50,7 @@ const Poster = () => {
                             data.length ? data.map(i => <div className='result' key={i.id}>
                                     <img className='small-logo' src={IMG_URL + i.backdrop_path} alt='poster'/>
                                     {
-                                        i.title.length > 10 ? <p className='orginal-title'>{i.title.split(" ").slice(0,2).join(" ")} ...</p> :
+                                        i.title.length > 10 ? <p className='orginal-title'>{shorten(i.title, 0, 2)} ...</p> :
                                         <p className='orginal-title'>{i.title}</p>
                                     }
                                     <p className='date'>({i.release_date.slice(0,4)})</p>

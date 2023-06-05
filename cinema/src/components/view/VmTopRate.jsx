@@ -36,7 +36,10 @@ const VmTopRate = () => {
                 newTopRate[4] ? newTopRate[4].map(i => <div key={i.id} className='card'>
                     <img src={IMG_URL + i.poster_path} className='movie-poster' alt='poster'/>
                     <Link to={`/details/${i.id}`}>
-                        <p className='title'>{i.original_title}</p>
+                        {
+                            i.original_title.length > 10 ? <p className='title'>{shorten(i.original_title, 0, 3)} ...</p> :
+                            <p className='title'>{i.original_title}</p>
+                        }
                     </Link>
                     <p className='release-date'>{i.release_date.slice(0,4)}</p>
                     <div className='votes'>

@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector , useDispatch } from "react-redux";
 import { fetchUsers } from '../redux/data/dataAction';
-import {increase, decrease} from "../redux/count/counterAction";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/View.scss";
@@ -16,26 +15,14 @@ import spinner from "../../assets/gif/Ellipsis-2.4s-200px.gif";
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 const VmBest = () => {
-    let count;
     AOS.init();
     const [star, setStar] = useState(false);
-    const newBest = useSelector(state => state.dataState.selectItem);
+    const newBest = useSelector(state => state.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {
         !newBest.length && dispatch(fetchUsers());
     }, [])
-
-    const starCounter = movieId => {
-        setStar(true);
-        const findData = newBest[2].findIndex(i => i.id === movieId);
-        console.log(findData);
-        if(findData) {
-            const result = newBest[2][findData].vote_count + 1;
-            console.log(result);
-            return result;
-        }
-    }
 
     return (
         <div className='cards' data-aos="fade-left" data-aos-delay="100">
@@ -49,21 +36,23 @@ const VmBest = () => {
                 newBest[2] ? newBest[2].map(i => <div key={i.id} className='card'>
                 <img src={IMG_URL + i.poster_path} className='movie-poster' alt='poster'/>
                 <Link to={`/details/${i.id}`}>
-                    <p className='title'>{i.original_title}</p>
+                    {
+                        i.original_title.length > 10 ? <p className='title'>{shorten(i.original_title, 0, 3)} ...</p> :
+                        <p className='title'>{i.original_title}</p>
+                    }
                 </Link>
                 {<p className='release-date'>{i.release_date.slice(0,4)}</p>}
                 <div className='votes'>
                     <div className='imdb'>
                         <img src={imdb} alt='imdb'/>
-                        <p>{i.vote_average} ({star ? `${+starCounter}` : i.vote_count})</p>
+                        <p>{i.vote_average} ({i.vote_count})</p>
                     </div>
                     {
                         star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
-                            dispatch(increase(i.id))
+                            setStar(true)
                         }}/> : 
                         <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                             setStar(false)
-                            dispatch(decrease(i.id))
                         }}/>
                     }
                 </div>

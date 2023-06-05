@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector , useDispatch } from "react-redux";
 import { fetchUsers } from '../redux/data/dataAction';
+import { shorten } from '../../functions/functions';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/Cards.scss";
@@ -17,7 +18,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const Best = () => {
     AOS.init();
     const [star, setStar] = useState(false);
-    const newBest = useSelector(state => state.dataState.selectItem);
+    const newBest = useSelector(state => state.selectItem);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,7 +37,10 @@ const Best = () => {
                 newBest[2] ? newBest[2].slice(0,4).map(i => <div key={i.id} className='card'>
                     <img src={IMG_URL + i.poster_path} className='movie-poster' alt='poster'/>
                     <Link to={`/details/${i.id}`}>
-                        <p className='title'>{i.original_title}</p>
+                        {
+                            i.original_title.length > 10 ? <p className='title'>{shorten(i.original_title, 0, 3)} ...</p> :
+                            <p className='title'>{i.original_title}</p>
+                        }
                     </Link>
                     <p className='release-date'>{i.release_date.slice(0,4)}</p>
                     <div className='votes'>

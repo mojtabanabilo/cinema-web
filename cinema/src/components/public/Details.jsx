@@ -15,7 +15,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const Details = () => {
     const params = useParams();
     const navigator = useNavigate();
-    const data = useSelector(state => state.dataState.details);
+    const data = useSelector(state => state.details);
     const dispatch = useDispatch();
     const result = data.find(i => i.id === +params.id);
 
@@ -51,7 +51,7 @@ const Details = () => {
                             </div>
                             <div className='lang'>
                                 <img src={lang} alt='imdb'/>
-                                <p>{result.original_language.toUpperCase()}</p>
+                                <p>{result.original_language}</p>
                             </div>
                         </div>
                     </div>
