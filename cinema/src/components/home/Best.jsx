@@ -35,7 +35,7 @@ const Best = () => {
             </div>
             {
                 newBest[2] ? newBest[2].slice(0,4).map(i => <div key={i.id} className='card'>
-                    <img src={IMG_URL + i.poster_path} className='movie-poster' alt='poster'/>
+                    <img src={IMG_URL + i.poster_path} className='movie-poster'/>
                     <Link to={`/details/${i.id}`}>
                         {
                             i.original_title.length > 10 ? <p className='title'>{shorten(i.original_title, 0, 3)} ...</p> :
