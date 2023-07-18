@@ -13,15 +13,20 @@ const Header = () => {
     const profileDom = useRef(null);
     const linksMenuDom = useRef(null);
     const navigator = useNavigate();
-    const userWidth = window.screen.availWidth;
 
     const [profile, setProfile] = useState(false);
     const [dropDown, setDropDown] = useState(false);
     const [picture, setPicture] = useState(null);
     const [menu, setMenu] = useState(false);
+    const [userWidth, setUserWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         setDropDown(true);
+        const handleResizeWindow = () => setUserWidth(window.innerWidth);
+        window.addEventListener("resize", handleResizeWindow);
+        return () => {
+           window.removeEventListener("resize", handleResizeWindow);
+        };
     }, [])
 
     return (
