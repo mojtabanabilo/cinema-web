@@ -12,7 +12,8 @@ import imdb from "../../assets/icon/icons8-imdb-48.png";
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-const Details = () => {
+const Details = ({fav}) => {
+    const {favorite, setFavorite} = fav;
     const params = useParams();
     const navigator = useNavigate();
     const data = useSelector(state => state.details);

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector , useDispatch } from "react-redux";
 import { fetchUsers } from '../redux/data/dataAction';
-import { shorten } from '../../functions/functions';
+import { shorten, starHandler } from '../../functions/functions';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/Cards.scss";
@@ -15,7 +15,8 @@ import spinner from "../../assets/gif/Ellipsis-2.4s-200px.gif";
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-const TopRate = () => {
+const TopRate = ({favHC}) => {
+    const {favorite, setFavorite} = favHC;
     AOS.init();
     const [star, setStar] = useState(false);
     const newTopRate = useSelector(state => state.selectItem);
@@ -51,6 +52,8 @@ const TopRate = () => {
                         {
                             star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
                                 setStar(true);
+                                starHandler(newTopRate[4] ,i.id)
+                                if(starHandler) setFavorite(prev => [...prev, starHandler(newTopRate[4] ,i.id)])
                             }}/> : 
                             <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                                 setStar(false);

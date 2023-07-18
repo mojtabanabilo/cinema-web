@@ -12,19 +12,19 @@ import Best from '../home/Best';
 import Poster from '../home/Poster';
 import Footer from './Footer';
 
-const Home = ({x}) => {
-    const {favorite, setFavorite} = x;
+const Home = ({fav}) => {
+    const {favorite, setFavorite} = fav;
     return (
         <>
             <Header />            
                 <div className='components'>
-                    <Poster />
-                    <Popular />
-                    <Current />
-                    <Drama />
-                    <TopRate />
-                    <Kids />
-                    <Best y={{favorite, setFavorite}}/>
+                    <Poster favHC={{favorite, setFavorite}}/>
+                    <Popular favHC={{favorite, setFavorite}}/>
+                    <Current favHC={{favorite, setFavorite}}/>
+                    <Drama favHC={{favorite, setFavorite}}/>
+                    <TopRate favHC={{favorite, setFavorite}}/>
+                    <Kids favHC={{favorite, setFavorite}}/>
+                    <Best favHC={{favorite, setFavorite}}/>
                 </div>
             <Footer />
         </>

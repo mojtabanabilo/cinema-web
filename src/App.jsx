@@ -28,14 +28,14 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path='/' element={<Login />}/>
-          <Route path='/home' element={<Home x={{favorite, setFavorite}} />}/>
-          <Route path='/details/:id' element={<Details />}/>
-          <Route path='/vmpopular' element={<VmPopular/>}/>
-          <Route path='/vmcurrent' element={<VmCurrent />}/>
-          <Route path='/vmdrama' element={<VmDrama />}/>
-          <Route path='/vmtoprate' element={<VmTopRate />}/>
-          <Route path='/vmkids' element={<VmKids />}/>
-          <Route path='/vmbest' element={<VmBest />}/>
+          <Route path='/home' element={<Home fav={{favorite, setFavorite}} />}/>
+          <Route path='/details/:id' element={<Details fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmpopular' element={<VmPopular fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmcurrent' element={<VmCurrent fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmdrama' element={<VmDrama fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmtoprate' element={<VmTopRate fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmkids' element={<VmKids fav={{favorite, setFavorite}} />}/>
+          <Route path='/vmbest' element={<VmBest fav={{favorite, setFavorite}} />}/>
           <Route path='/favorite' element={<Favorite data={{favorite, setFavorite}}/>}/>
           <Route path='/*' element={<NotFound />}/>
         </Routes>
