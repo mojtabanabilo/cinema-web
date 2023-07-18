@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { shorten } from '../../functions/functions';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../../assets/style/public/View.scss";
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+
+// icons
+import yellowStar from "../../assets/icon/icons8-star-48 (1).png";
+import whiteStar from "../../assets/icon/icons8-star-48.png";
+import imdb from "../../assets/icon/icons8-imdb-48.png";
+import spinner from "../../assets/gif/Ellipsis-2.4s-200px.gif";
+
 
 const Favorite = ({data}) => {
     AOS.init();
     const {favorite, setFavorite} = data;
+    const [star, setStar] = useState(false);
+    console.log(favorite);
     return (
         <div className='cards' data-aos="fade-left" data-aos-delay="100">
             <div className='head-title'>
-                <h1>Best Movie's</h1>
+                <h1>favorite movies</h1>
                 <Link to="/home">
                     <p>Back to home.</p>
                 </Link>

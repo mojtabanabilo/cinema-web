@@ -37,6 +37,7 @@ const Header = () => {
                             <Link to='/vmdrama'>Drama</Link>
                             <Link to='/vmkids'>Animation</Link>
                             <Link to='/vmpopular'>Popular</Link>
+                            <Link to='/favorite'>favorite</Link>
                         </ul>
                     </div>
                 }

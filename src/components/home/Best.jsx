@@ -15,7 +15,9 @@ import spinner from "../../assets/gif/Ellipsis-2.4s-200px.gif";
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-const Best = () => {
+const Best = ({y}) => {
+    const {favorite, setFavorite} = y;
+    console.log(favorite);
     AOS.init();
     const [star, setStar] = useState(false);
     const newBest = useSelector(state => state.selectItem);
@@ -24,6 +26,10 @@ const Best = () => {
     useEffect(() => {
         !newBest.length && dispatch(fetchUsers());
     }, [])
+
+    const starHandler = (id) => {
+        if(newBest[2]) return newBest[2].find(i => i.id === id);
+    }
 
     return (
         <div className='cards' data-aos="fade-left" data-aos-delay="100">
@@ -51,6 +57,8 @@ const Best = () => {
                         {
                             star === false ? <img src={whiteStar} className='stars' alt='stars' onClick={() => {
                                 setStar(true);
+                                starHandler(i.id)
+                                if(starHandler) setFavorite(prev => [...prev, starHandler(i.id)])
                             }}/> : 
                             <img src={yellowStar} className='stars' alt='stars' onClick={() => {
                                 setStar(false);

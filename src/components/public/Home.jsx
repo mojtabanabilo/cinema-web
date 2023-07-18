@@ -12,7 +12,8 @@ import Best from '../home/Best';
 import Poster from '../home/Poster';
 import Footer from './Footer';
 
-const Home = () => {
+const Home = ({x}) => {
+    const {favorite, setFavorite} = x;
     return (
         <>
             <Header />            
@@ -23,7 +24,7 @@ const Home = () => {
                     <Drama />
                     <TopRate />
                     <Kids />
-                    <Best />
+                    <Best y={{favorite, setFavorite}}/>
                 </div>
             <Footer />
         </>

@@ -28,7 +28,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path='/' element={<Login />}/>
-          <Route path='/home' element={<Home />}/>
+          <Route path='/home' element={<Home x={{favorite, setFavorite}} />}/>
           <Route path='/details/:id' element={<Details />}/>
           <Route path='/vmpopular' element={<VmPopular/>}/>
           <Route path='/vmcurrent' element={<VmCurrent />}/>
